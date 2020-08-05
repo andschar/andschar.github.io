@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Standartox - Andreas Scharmüller</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Standardizing Toxicity Data">
+		<meta property="og:title" content="Standartox" />
+<meta property="og:description" content="Standardizing Toxicity Data" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/1/01/01/standartox/" />
+
+
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-172438224-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="/" title="Andreas Scharmüller" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Andreas Scharmüller</div>
+					<div class="logo__tagline">Data in Environmental Science &amp; Ecotoxicology</div>
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/research/">
+				
+				<span class="menu__text">Research</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/software/">
+				
+				<span class="menu__text">Software</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+				
+				<span class="menu__text">About</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/cv/">
+				
+				<span class="menu__text">CV</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Standartox</h1>
+			<div class="post__meta meta"><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ecotoxicology/" rel="category">ecotoxicology</a>, <a class="meta__link" href="/categories/r/" rel="category">R</a>, <a class="meta__link" href="/categories/software/" rel="category">software</a>
+	</span>
+</div></div>
+		</header><div class="content post__content clearfix">
+			
+
+
+<p>An increasing number of chemicals such as pharmaceuticals, pesticides and
+synthetic hormones are in daily use all over the world. In the environment,
+chemicals can adversely affect populations and communities and in turn related
+ecosystem functions. To evaluate the risks from chemicals for ecosystems, data
+on their toxicity, which are typically produced in standardized ecotoxicological
+laboratory tests, is required. However, this kind of data is not always easy
+to retrieve in adequate formats. One could, in the case of pesticides
+find them in the <a href="https://sitem.herts.ac.uk/aeru/ppdb/">Pesticide Property Data Base (PPDB)</a>,
+search the literature for these values or query the vast <a href="https://cfpub.epa.gov/ecotox/">EPA ECOTOX knowledgebase</a>.
+Yet, all of these methods or resources have their drawbacks.</p>
+<p><a href="https://www.mdpi.com/717852">
+<img
+    src="https://res.mdpi.com/data/covers/data/big_cover-data-v5-i2.png"
+    alt="Standartox MDPI Data cover"
+    width = "250px"
+    style="float:left; margin:5px 10px 5px 0px">
+</a></p>
+<p>Here, <strong>Standartox</strong>
+steps onto the stage, by providing filter and aggregate methods for cleaned
+ecotoxicity data. <strong>Standartox</strong> is a tool and processing pipeline that
+continuously incorporates the ever-growing number of test results in an
+automated process workflow that ultimately leads to a single aggregated data
+point for a specific chemical-organism test combination,
+representing the toxicity of a chemical. For now <strong>Standartox</strong> relies solely on
+data of the quarterly updated <a href="https://cfpub.epa.gov/ecotox/">EPA ECOTOX knowledgebase</a>.
+This might be different in future releases.</p>
+<p><strong>Standartox</strong> can be accessed through a web application at: <a href="http://standartox.uni-landau.de" class="uri">http://standartox.uni-landau.de</a>
+and the <a href="https://www.r-project.org/">R</a> package <a href="https://andschar.github.io/standartox/">standartox</a>,
+whereby the latter allows for more tailored queries and directly loading the
+data into R. The R package is built around a web service hosted at the
+university of Landau. A paper about Standartox has recently been published at
+<a href="https://www.mdpi.com/717852">MDPI Data</a>.</p>
+<div id="the-r-package" class="section level1">
+<h1>The R package</h1>
+<p>The <strong>Standartox</strong> R package mainly consists of the two functions <code>stx_catalog()</code>
+and <code>stx_query()</code>. The former returns a catalog with all possible parameters
+and entries that can be used in the latter to query the actual data. Let’s start
+with an example.</p>
+<p>Say, we are interested in the susceptibility of different
+organisms towards <a href="https://en.wikipedia.org/wiki/Glyphosate">Glyphosate</a>.</p>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>First, we install and load the Standartox package together with other
+packages for data manipulation (<a href="https://github.com/Rdatatable/data.table">data.table</a>)
+and plotting (<a href="https://ggplot2.tidyverse.org/">ggplot2</a>). Since <a href="https://andschar.github.io/standartox/">standartox</a>
+is not yet on <a href="https://cran.r-project.org/">CRAN</a>, we install it from GitHub.</p>
+<pre class="r"><code># remotes::install_github(&#39;andschar/standartox&#39;) # package not yet on CRAN
+require(standartox)
+require(data.table)
+require(ggplot2)</code></pre>
+</div>
+<div id="the-catalog---stx_catalog" class="section level2">
+<h2>The catalog - <code>stx_catalog()</code></h2>
+<p>Then, we directly use <code>stx_catalog()</code> to query the catalog for parameters to be
+used in the query function. We store the returned list object it in a variable
+named <code>catal</code>. The parameters in <code>catal</code> are shown in the table below:</p>
+<pre class="r"><code>catal = stx_catalog()</code></pre>
+<pre><code>## Retrieving Standartox catalog..</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">parameter</th>
+<th align="left">example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">casnr</td>
+<td align="left">50000, 94815, 94826</td>
+</tr>
+<tr class="even">
+<td align="left">cname</td>
+<td align="left">2439, 4, 3</td>
+</tr>
+<tr class="odd">
+<td align="left">concentration_unit</td>
+<td align="left">ug/l, mg/kg, ppb</td>
+</tr>
+<tr class="even">
+<td align="left">concentration_type</td>
+<td align="left">active ingredient, formulation, total</td>
+</tr>
+<tr class="odd">
+<td align="left">chemical_role</td>
+<td align="left">pesticide, herbicide, drug</td>
+</tr>
+<tr class="even">
+<td align="left">chemical_class</td>
+<td align="left">amide, aromatic, organochlorine</td>
+</tr>
+<tr class="odd">
+<td align="left">taxa</td>
+<td align="left">species, genus, Fusarium oxysporum</td>
+</tr>
+<tr class="even">
+<td align="left">trophic_lvl</td>
+<td align="left">heterotroph, autotroph</td>
+</tr>
+<tr class="odd">
+<td align="left">habitat</td>
+<td align="left">freshwater, terrestrial, marine</td>
+</tr>
+<tr class="even">
+<td align="left">region</td>
+<td align="left">europe, america_north, america_south</td>
+</tr>
+<tr class="odd">
+<td align="left">ecotox_grp</td>
+<td align="left">invertebrate, plant, fish</td>
+</tr>
+<tr class="even">
+<td align="left">duration</td>
+<td align="left">24, 96</td>
+</tr>
+<tr class="odd">
+<td align="left">effect</td>
+<td align="left">mortality, population, biochemistry</td>
+</tr>
+<tr class="even">
+<td align="left">endpoint</td>
+<td align="left">NOEX, LOEX, XX50</td>
+</tr>
+<tr class="odd">
+<td align="left">exposure</td>
+<td align="left">aquatic, environmental, diet</td>
+</tr>
+<tr class="even">
+<td align="left">vers</td>
+<td align="left">20191212</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-query---stx_query" class="section level2">
+<h2>The query - <code>stx_query()</code></h2>
+<p>Now, that we know what parameters can be set, we code the actual
+query, thereby setting the <code>casnr</code> to 1071-83-6, choosing XX50 as our <code>endpoint</code>
+and limiting the <code>duration</code> to a range from 24 to 120h, amongst others.
+The query takes a little to complete, depending on the number of chemicals
+that should be queried.</p>
+<pre class="r"><code>l1 = stx_query(casnr = &#39;1071-83-6&#39;, # Glyphosate
+               endpoint = &#39;XX50&#39;, # contains EC50, LC50, ...
+               concentration_unit = &#39;ug/l&#39;,
+               duration = c(24, 120), # all in hours
+               habitat = &#39;freshwater&#39;,
+               concentration_type = &#39;active ingredient&#39;)</code></pre>
+<pre><code>## Standartox query running..
+## Parameters:
+## casnr: 1071-83-6
+## concentration_unit: ug/l
+## concentration_type: active ingredient
+## duration: 24, 120
+## endpoint: XX50
+## habitat: freshwater</code></pre>
+<p><code>stx_query()</code> returns a list containing a <strong>filtered</strong>, a <strong>filtered_all</strong>
+and the <strong>aggregated</strong> data set as well as a <strong>meta</strong> data set.
+These are all <code>data.table</code>s (and <code>data.frame</code>s) (Disclaimer: You might encounter
+other list entries, which are currently work in progress and shouldn’t bother
+you for now).</p>
+<ul>
+<li><p>The <strong>filtered</strong> data set contains the most important information on the test
+result, including chemical names and identifiers (e.g. cas, inchikey),
+endpoint, effect and exposure groups as well as taxonomic information.
+Likewise, the converted and the original concentration and the duration
+together with the respective units are returned.</p></li>
+<li><p>The <strong>filtered_all</strong> data set contains even more of this information,
+for example the EPA ECOTOX knowledgebase in-house identifiers and
+information on the reference, such as titles, authors and years.</p></li>
+<li><p>The <strong>aggregated</strong> data set contains aggregated values,
+meaning the minimum, the geometric mean and the maximum for each chemical. Also,
+the taxa providing the minimum and maximum are included.</p></li>
+</ul>
+<pre class="r"><code>agg = l1$aggregated</code></pre>
+<table>
+<colgroup>
+<col width="13%" />
+<col width="11%" />
+<col width="4%" />
+<col width="13%" />
+<col width="10%" />
+<col width="10%" />
+<col width="9%" />
+<col width="21%" />
+<col width="4%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">cname</th>
+<th align="left">cas</th>
+<th align="right">min</th>
+<th align="left">tax_min</th>
+<th align="right">gmn</th>
+<th align="right">gmnsd</th>
+<th align="right">max</th>
+<th align="left">tax_max</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">glyphosate</td>
+<td align="left">1071-83-6</td>
+<td align="right">5.3</td>
+<td align="left">Gomphonema</td>
+<td align="right">30500.84</td>
+<td align="right">1.949947</td>
+<td align="right">6209704</td>
+<td align="left">Carassius auratus</td>
+<td align="right">249</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The <strong>meta</strong> data set provides information on when, and from which version
+the data was queried, assuring reproducibility.</li>
+</ul>
+</div>
+<div id="plot-the-data" class="section level2">
+<h2>Plot the data</h2>
+<p>To get an overview of how the susceptibility of different taxa towards Glyphosate
+varies, we plot the data and order it accordingly. We choose to plot the data on
+the genus level. To get the geometric mean for every genus and Glyphosate, we
+take the filtered data and and use a non-exported function from within standartox.</p>
+<pre class="r"><code>fil = l1$filtered # extract the filtered data.table
+# aggregate over genera
+fil_mn = fil[ ,
+              .(gmn = standartox:::gm_mean(concentration)),
+              by = .(tax_genus, ecotox_grp) ]</code></pre>
+<pre class="r"><code># build appropriate colors
+col = c(&#39;deepskyblue4&#39;, &#39;yellowgreen&#39;, &#39;tomato4&#39;, &#39;darkgreen&#39;, &#39;goldenrod&#39;)
+names(col) = unique(fil$ecotox_grp)
+# plot
+ggplot(fil) +
+  geom_point(aes(x = concentration,
+                 y = reorder(tax_genus, -concentration),
+                 col = ecotox_grp),
+             size = 2, pch = 1) +
+  geom_point(data = fil_mn,
+             aes(x = gmn,
+                     y = tax_genus,
+                     col = ecotox_grp),
+             size = 3) +
+  scale_x_log10(breaks = c(1e1, 1e2, 1e3, 1e4, 1e5, 1e6, 1e7),
+                labels = c(10, 100, 1000, 10000, 100000, 1e6, 1e7)) +
+  scale_color_manual(values = col) +
+  labs(x = &#39;Log10 Concentration (ug/l)&#39;) +
+  theme_bw() +
+  theme(axis.title.y = element_blank())</code></pre>
+<p><img src="/post/2020-08-04-standartox_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>We observe that the two diatom genera <a href="https://www.algaebase.org/search/genus/detail/?genus_id=43720"><em>Gomphonema</em></a> and
+<a href="https://en.wikipedia.org/wiki/Skeletonema"><em>Skeletonema</em></a> together with the
+crayfish genus <a href="https://en.wikipedia.org/wiki/Orconectes"><em>Orconectes</em></a> constitute
+the three most susceptible taxa. However, it appears that each of these taxa
+have only been tested once and we caution users to directly take this values for
+granted, without having a look into the study. In contrast, the <a href="https://en.wikipedia.org/wiki/Oncorhynchus"><em>Oncorhynchus</em></a>
+fish genus is much better tested and exhibits a discrepancy ranging over several
+orders of magnitude, possibly also because of the many different species, including
+Rainbow trout and Pacific salmons comprised in the genus. Here it would be wise
+to look choose a specific <a href="https://en.wikipedia.org/wiki/Oncorhynchus"><em>Oncorhynchus</em></a>
+species, when used for chemical risk assessment.</p>
+</div>
+<div id="tech-stack" class="section level2">
+<h2>Tech stack</h2>
+<p>To rebuild the Standartox database, all the necessary scripts can be found at the
+<a href="https://github.com/andschar/standartox-build">standartox-build</a> GitHub page.
+Basically, the <a href="https://cfpub.epa.gov/ecotox/">EPA ECOTOX knowledgebase</a>
+is downloaded and built into a <a href="https://www.postgresql.org/">PostgreSQL</a> database.
+There, several SQL and R processing scripts prepare the data.
+To build the web application Standartox relies on the <a href="https://shiny.rstudio.com/">shiny</a>
+web framework and associated packages. The web service is built with the <a href="https://www.rplumber.io/">plumber</a>
+R package. Throughout the project, the <a href="https://github.com/Rdatatable/data.table">data.table</a>
+package is used to guarantee fast processing. To allow fast data
+transmission the filtered data is serialized before sending it to clients
+by using the <a href="https://www.fstpackage.org/">fst</a> R package.</p>
+</div>
+<div id="resources" class="section level2">
+<h2>Resources</h2>
+<ul>
+<li>Blog post: <a href="https://andschar.github.io/1/01/01/standartox" class="uri">https://andschar.github.io/1/01/01/standartox</a></li>
+<li>Paper: <a href="https://www.mdpi.com/717852" class="uri">https://www.mdpi.com/717852</a></li>
+<li>GDCH article (in German): <a href="https://www.gdch.de/fileadmin/downloads/Netzwerk_und_Strukturen/Fachgruppen/Umweltchemie_OEkotoxikologie/mblatt/2020/b2h120.pdf" class="uri">https://www.gdch.de/fileadmin/downloads/Netzwerk_und_Strukturen/Fachgruppen/Umweltchemie_OEkotoxikologie/mblatt/2020/b2h120.pdf</a></li>
+<li>Blog post to build the EPA ECOTOX knowledebase locally: <a href="https://edild.github.io/localecotox" class="uri">https://edild.github.io/localecotox</a></li>
+</ul>
+<p>The project is located at the two GitHub repositories
+<a href="https://github.com/andschar/standartox-build">standartox-build</a> containing the
+processing scripts as well as web service and application definition files.
+<a href="https://andschar.github.io/standartox/">standartox</a> contains the code for the
+R-package.</p>
+</div>
+<div id="final-thoughts" class="section level2">
+<h2>Final Thoughts</h2>
+<p>Surely, such a project isn’t simply finished once the paper is published. New
+data is regularly included, data gaps need to be filled and errors, lurking most
+certainly somewhere in the depths of Standartox need to be corrected. Feel free
+to file an issue at the <a href="https://github.com/andschar/standartox-build/issues">GitHub page</a>
+if you find a bug or want to suggest a new feature. I also have plans to extend
+Standartox, which might be discussed in a future blog post. You also find a more
+detailed explanation of the package at the <a href="https://andschar.github.io/standartox/">project page</a>.</p>
+<p>By the way, if you need additional data for your chemicals, you most certainly
+can retrieve them with the help of the <a href="https://github.com/ropensci/webchem">webchem</a>
+R package, a project where I’m also involved.</p>
+</div>
+</div>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/standartox/" rel="tag">standartox</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ecotoxicology/" rel="tag">ecotoxicology</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/web-service/" rel="tag">web service</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/r/" rel="tag">R</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/package/" rel="tag">package</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Andreas Scharmüller avatar" src="/img/photo_scharmueller_201405.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Andreas Scharmüller</span>
+	</div>
+	<div class="authorbox__description">
+		Environmental data analyst
+	</div>
+</div>
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "andschar" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="/" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/1/01/01/standartox/">Standartox</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/ecotoxicology/">ecotoxicology</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/r/">R</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="/categories/software/">software</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/ecotoxicology/" title="ecotoxicology">ecotoxicology</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/package/" title="package">package</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/r/" title="R">R</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/standartox/" title="standartox">standartox</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/web-service/" title="web service">web service</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Andreas Scharmüller.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>
