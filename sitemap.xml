@@ -3,88 +3,110 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/about/</loc>
+    <loc>https://andschar.github.io/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/categories/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/post/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/categories/r/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/tags/r/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/2020/08/11/standartox/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/tags/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/categories/ecotoxicology/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/tags/ecotoxicology/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/tags/package/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/categories/software/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/tags/standartox/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/tags/web-service/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/tags/webchem/</loc>
+    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://andschar.github.io/about/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/cv/</loc>
+    <loc>https://andschar.github.io/cv/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/research/</loc>
+    <loc>https://andschar.github.io/research/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/software/</loc>
+    <loc>https://andschar.github.io/software/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/r/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/r/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/1/01/01/standartox/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/ecotoxicology/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/ecotoxicology/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/package/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/software/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/standartox/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/web-service/</loc>
-    <priority>0</priority>
+    <loc>https://andschar.github.io/blog/</loc>
   </url>
   
 </urlset>

@@ -2,38 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Andreas Scharmüller</title>
-    <link>/categories/</link>
+    <link>https://andschar.github.io/categories/</link>
     <description>Recent content in Categories on Andreas Scharmüller</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://andschar.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R</title>
-      <link>/categories/r/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://andschar.github.io/categories/r/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/r/</guid>
+      <guid>https://andschar.github.io/categories/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ecotoxicology</title>
-      <link>/categories/ecotoxicology/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://andschar.github.io/categories/ecotoxicology/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/ecotoxicology/</guid>
+      <guid>https://andschar.github.io/categories/ecotoxicology/</guid>
       <description></description>
     </item>
     
     <item>
       <title>software</title>
-      <link>/categories/software/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://andschar.github.io/categories/software/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/categories/software/</guid>
+      <guid>https://andschar.github.io/categories/software/</guid>
       <description></description>
     </item>
     
