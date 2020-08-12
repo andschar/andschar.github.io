@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Standartox - Andreas Scharmüller</title>
+	<title>Standartox - Standardizing Toxicity Data - Andreas Scharmüller</title>
 	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
-	<meta name="description" content="Standardizing Toxicity Data">
-		<meta property="og:title" content="Standartox" />
-<meta property="og:description" content="Standardizing Toxicity Data" />
+	<meta name="description" content="">
+		<meta property="og:title" content="Standartox - Standardizing Toxicity Data" />
+<meta property="og:description" content="An increasing number of chemicals such as pharmaceuticals, pesticides and synthetic hormones are in daily use all over the world. In the environment, chemicals can adversely affect populations and communities and in turn related ecosystem functions. To evaluate the risks from chemicals for ecosystems, data on their toxicity, which are typically produced in standardized ecotoxicological laboratory tests, is required. However, this kind of data is not always easy to retrieve in adequate formats." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://andschar.github.io/2020/08/11/standartox/" />
 <meta property="article:published_time" content="2020-08-11T00:00:00&#43;00:00"/>
@@ -18,7 +18,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
 	<link rel="stylesheet" href="/css/style.css">
-	
+	<link rel="stylesheet" href="/css/custom.css">
 	<link rel="shortcut icon" href="/favicon.ico">
 		
 <script type="application/javascript">
@@ -98,7 +98,7 @@ if (!doNotTrack) {
 <main class="main" role="main">
 	<article class="post">
 		<header class="post__header">
-			<h1 class="post__title">Standartox</h1>
+			<h1 class="post__title">Standartox - Standardizing Toxicity Data</h1>
 			<div class="post__meta meta">
 <div class="meta__item-datetime meta__item">
 	<svg class="meta__icon icon icon-time" width="16" height="14" viewBox="0 0 30 28"><path d="M15 0C7 0 1 6 1 14s6 14 14 14 14-6 14-14S23 0 15 0zm0 25C9 25 4 20 4 14S9 3 15 3s11 5 11 11-5 11-11 11zm1-18h-2v8.4l6.8 4.4L22 18l-6-3.8V7z"/></svg><time class="meta__text" datetime="2020-08-11T00:00:00Z">August 11, 2020</time></div><div class="meta__item-categories meta__item"><svg class="meta__icon icon icon-category" width="16" height="16" viewBox="0 0 16 16"><path d="m7 2l1 2h8v11h-16v-13z"/></svg><span class="meta__text"><a class="meta__link" href="/categories/ecotoxicology/" rel="category">ecotoxicology</a>, <a class="meta__link" href="/categories/r/" rel="category">R</a>, <a class="meta__link" href="/categories/software/" rel="category">software</a>
@@ -126,27 +126,30 @@ Yet, all of these methods or resources have their drawbacks.</p>
     style="float:left; margin:5px 10px 5px 0px">
 </a></p>
 <p>Here, <strong>Standartox</strong>
-steps onto the stage, by providing filter and aggregate methods for cleaned
+steps onto the stage, by providing filter and aggregation methods for cleaned
 ecotoxicity data. <strong>Standartox</strong> is a tool and processing pipeline that
 continuously incorporates the ever-growing number of test results in an
 automated process workflow that ultimately leads to a single aggregated data
 point for a specific chemical-organism test combination,
-representing the toxicity of a chemical. For now <strong>Standartox</strong> relies solely on
+representing the toxicity of a chemical. These values can be used for the
+derivation of <a href="https://en.wikipedia.org/wiki/Toxic_unit">Toxic units (TU)</a>
+or <a href="https://github.com/bcgov/ssdtools">Species Sensitivity Distributions (SSD)</a>
+For now <strong>Standartox</strong> relies solely on
 data of the quarterly updated <a href="https://cfpub.epa.gov/ecotox/">EPA ECOTOX knowledgebase</a>.
-This might be different in future releases.</p>
-<p><strong>Standartox</strong> can be accessed through a web application at: <a href="http://standartox.uni-landau.de" class="uri">http://standartox.uni-landau.de</a>
+This might be different in future releases. A paper about Standartox has
+recently been published at <a href="https://www.mdpi.com/717852">MDPI Data</a>.</p>
+<p><strong>Standartox</strong> can be accessed through the web application <a href="http://standartox.uni-landau.de" class="uri">http://standartox.uni-landau.de</a>
 and the <a href="https://www.r-project.org/">R</a> package <a href="https://andschar.github.io/standartox/">standartox</a>,
 whereby the latter allows for more tailored queries and directly loading the
 data into R. The R package is built around a web service hosted at the
-university of Landau. A paper about Standartox has recently been published at
-<a href="https://www.mdpi.com/717852">MDPI Data</a>.</p>
+university of Landau. This blog post will discuss, how
+to access Standartox via the R-package.</p>
 <div id="the-r-package" class="section level1">
 <h1>The R package</h1>
 <p>The <strong>Standartox</strong> R package mainly consists of the two functions <code>stx_catalog()</code>
-and <code>stx_query()</code>. The former returns a catalog with all possible parameters
+and <code>stx_query()</code>. The former returns a catalog containing all possible parameters
 and entries that can be used in the latter to query the actual data. Let’s start
-with an example.</p>
-<p>Say, we are interested in the susceptibility of different
+with an example. Say, we are interested in the susceptibility of different
 organisms towards <a href="https://en.wikipedia.org/wiki/Glyphosate">Glyphosate</a>.</p>
 <div id="installation" class="section level2">
 <h2>Installation</h2>
@@ -154,16 +157,17 @@ organisms towards <a href="https://en.wikipedia.org/wiki/Glyphosate">Glyphosate<
 packages for data manipulation (<a href="https://github.com/Rdatatable/data.table">data.table</a>)
 and plotting (<a href="https://ggplot2.tidyverse.org/">ggplot2</a>). Since <a href="https://andschar.github.io/standartox/">standartox</a>
 is not yet on <a href="https://cran.r-project.org/">CRAN</a>, we install it from GitHub.</p>
-<pre class="r"><code># remotes::install_github(&#39;andschar/standartox&#39;) # package not yet on CRAN
+<pre class="r"><code># install.packages(&#39;remotes&#39;) # if remotes:: is not installed
+# remotes::install_github(&#39;andschar/standartox&#39;) # package not yet on CRAN
 require(standartox)
 require(data.table)
 require(ggplot2)</code></pre>
 </div>
 <div id="the-catalog---stx_catalog" class="section level2">
 <h2>The catalog - <code>stx_catalog()</code></h2>
-<p>Then, we directly use <code>stx_catalog()</code> to query the catalog for parameters to be
-used in the query function. We store the returned list object it in a variable
-named <code>catal</code>. The parameters in <code>catal</code> are shown in the table below:</p>
+<p>Then, we directly use <code>stx_catalog()</code> to query the catalog of parameters that
+can be used in the query function. We store the returned list object it in a
+variable named <code>catal</code>. The parameters in <code>catal</code> are shown in the table below:</p>
 <pre class="r"><code>catal = stx_catalog()</code></pre>
 <pre><code>## Retrieving Standartox catalog..</code></pre>
 <table>
@@ -244,10 +248,10 @@ named <code>catal</code>. The parameters in <code>catal</code> are shown in the 
 <div id="the-query---stx_query" class="section level2">
 <h2>The query - <code>stx_query()</code></h2>
 <p>Now, that we know what parameters can be set, we code the actual
-query, thereby setting the <code>casnr</code> to 1071-83-6, choosing XX50 as our <code>endpoint</code>
-and limiting the <code>duration</code> to a range from 24 to 120h, amongst others.
-The query takes a little to complete, depending on the number of chemicals
-that should be queried.</p>
+query, thereby setting the <code>casnr</code> to 1071-83-6 (Glyphosate), choosing XX50 as
+our <code>endpoint</code> and limiting the <code>duration</code> to a range from 24 to 120h,
+amongst others. The query takes a little to complete (depending on the number
+of chemicals provided).</p>
 <pre class="r"><code>l1 = stx_query(casnr = &#39;1071-83-6&#39;, # Glyphosate
                endpoint = &#39;XX50&#39;, # contains EC50, LC50, ...
                concentration_unit = &#39;ug/l&#39;,
@@ -328,11 +332,13 @@ the data was queried, assuring reproducibility.</li>
 <div id="plot-the-data" class="section level2">
 <h2>Plot the data</h2>
 <p>To get an overview of how the susceptibility of different taxa towards Glyphosate
-varies, we plot the data and order it accordingly. We choose to plot the data on
-the genus level. To get the geometric mean for every genus and Glyphosate, we
-take the filtered data and and use a non-exported function from within standartox.</p>
+varies, we plot the data, ordered from lowest to highest.
+We choose to plot the data on the genus level. To calculate the geometric mean
+for every genus and Glyphosate, we take the filtered data and and use a
+non-exported function from within the standartox package
+<code>standartox:::gm_mean(x = )</code>.</p>
 <pre class="r"><code>fil = l1$filtered # extract the filtered data.table
-# aggregate over genera
+# aggregate over genera (data.table syntax)
 fil_mn = fil[ ,
               .(gmn = standartox:::gm_mean(concentration)),
               by = .(tax_genus, ecotox_grp) ]</code></pre>
@@ -363,17 +369,34 @@ ggplot(fil) +
 <a href="https://en.wikipedia.org/wiki/Skeletonema"><em>Skeletonema</em></a> together with the
 crayfish genus <a href="https://en.wikipedia.org/wiki/Orconectes"><em>Orconectes</em></a> constitute
 the three most susceptible taxa. However, it appears that each of these taxa
-have only been tested once and we caution users to directly take this values for
-granted, without having a look into the study. In contrast, the <a href="https://en.wikipedia.org/wiki/Oncorhynchus"><em>Oncorhynchus</em></a>
-fish genus is much better tested and exhibits a discrepancy ranging over several
-orders of magnitude, possibly also because of the many different species, including
-Rainbow trout and Pacific salmons comprised in the genus. Here it would be wise
-to look choose a specific <a href="https://en.wikipedia.org/wiki/Oncorhynchus"><em>Oncorhynchus</em></a>
-species, when used for chemical risk assessment.</p>
+have only been tested once and we should probably have a look into the study
+whether we can trust the result or not. In contrast, the <a href="https://en.wikipedia.org/wiki/Oncorhynchus"><em>Oncorhynchus</em></a>
+fish genus, for example is much better tested and exhibits a discrepancy ranging
+over several orders of magnitude, possibly also because of the many different
+species, including Rainbow trout and Pacific salmons comprised in the genus.
+Here it would be better to choose a specific <a href="https://en.wikipedia.org/wiki/Oncorhynchus"><em>Oncorhynchus</em></a>
+species, related to the study area.</p>
+<p>This is just a quick example on how to use <strong>Standartox</strong>. You can further
+refine the query to your needs, by setting parameters, such as <code>chemical_clas</code>
+<code>chemical_role</code>, <code>trophic_lvl</code>, <code>region</code> etc. Bear in mind though, this
+data might not (yet) be complete.</p>
+</div>
+<div id="final-thoughts" class="section level2">
+<h2>Final Thoughts</h2>
+<p>Surely, such a project isn’t finished once the paper is published. New
+data is regularly included, data gaps need to be filled and errors, lurking most
+certainly somewhere in the depths of <strong>Standartox</strong> need to be corrected. Feel free
+to file an issue at the <a href="https://github.com/andschar/standartox-build/issues">GitHub page</a>
+if you find a bug or want to suggest a new feature. I also have plans to extend
+<strong>Standartox</strong>, which might be discussed in a future blog post. You also find a
+more detailed explanation of the R package at the <a href="https://andschar.github.io/standartox/">project page</a>.</p>
+<p>By the way, if you need additional data for your chemicals, you most certainly
+can retrieve them with the help of the <a href="https://github.com/ropensci/webchem">webchem</a>
+R package, a project I’m also involved in.</p>
 </div>
 <div id="tech-stack" class="section level2">
 <h2>Tech stack</h2>
-<p>To rebuild the Standartox database, all the necessary scripts can be found at the
+<p>To rebuild the <strong>Standartox</strong> database, all the necessary scripts can be found at the
 <a href="https://github.com/andschar/standartox-build">standartox-build</a> GitHub page.
 Basically, the <a href="https://cfpub.epa.gov/ecotox/">EPA ECOTOX knowledgebase</a>
 is downloaded and built into a <a href="https://www.postgresql.org/">PostgreSQL</a> database.
@@ -382,8 +405,15 @@ To build the web application Standartox relies on the <a href="https://shiny.rst
 web framework and associated packages. The web service is built with the <a href="https://www.rplumber.io/">plumber</a>
 R package. Throughout the project, the <a href="https://github.com/Rdatatable/data.table">data.table</a>
 package is used to guarantee fast processing. To allow fast data
-transmission the filtered data is serialized before sending it to clients
-by using the <a href="https://www.fstpackage.org/">fst</a> R package.</p>
+transmission, the filtered data is serialized using the <a href="https://www.fstpackage.org/">fst</a>
+R package before sending it to the users. <strong>Standartox</strong>’s code is located at
+the two GitHub repositories:</p>
+<ul>
+<li><a href="https://github.com/andschar/standartox-build">standartox-build</a> contains the
+processing scripts as well as web service and application definition files.</li>
+<li><a href="https://andschar.github.io/standartox/">standartox</a> contains the code for the
+R-package.</li>
+</ul>
 </div>
 <div id="resources" class="section level2">
 <h2>Resources</h2>
@@ -393,24 +423,6 @@ by using the <a href="https://www.fstpackage.org/">fst</a> R package.</p>
 <li>GDCH article (in German): <a href="https://www.gdch.de/fileadmin/downloads/Netzwerk_und_Strukturen/Fachgruppen/Umweltchemie_OEkotoxikologie/mblatt/2020/b2h120.pdf" class="uri">https://www.gdch.de/fileadmin/downloads/Netzwerk_und_Strukturen/Fachgruppen/Umweltchemie_OEkotoxikologie/mblatt/2020/b2h120.pdf</a></li>
 <li>Blog post to build the EPA ECOTOX knowledebase locally: <a href="https://edild.github.io/localecotox" class="uri">https://edild.github.io/localecotox</a></li>
 </ul>
-<p>The project is located at the two GitHub repositories
-<a href="https://github.com/andschar/standartox-build">standartox-build</a> containing the
-processing scripts as well as web service and application definition files.
-<a href="https://andschar.github.io/standartox/">standartox</a> contains the code for the
-R-package.</p>
-</div>
-<div id="final-thoughts" class="section level2">
-<h2>Final Thoughts</h2>
-<p>Surely, such a project isn’t simply finished once the paper is published. New
-data is regularly included, data gaps need to be filled and errors, lurking most
-certainly somewhere in the depths of Standartox need to be corrected. Feel free
-to file an issue at the <a href="https://github.com/andschar/standartox-build/issues">GitHub page</a>
-if you find a bug or want to suggest a new feature. I also have plans to extend
-Standartox, which might be discussed in a future blog post. You also find a more
-detailed explanation of the package at the <a href="https://andschar.github.io/standartox/">project page</a>.</p>
-<p>By the way, if you need additional data for your chemicals, you most certainly
-can retrieve them with the help of the <a href="https://github.com/ropensci/webchem">webchem</a>
-R package, a project where I’m also involved.</p>
 </div>
 </div>
 
@@ -471,7 +483,7 @@ R package, a project where I’m also involved.</p>
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "andschar" + '.disqus.com/embed.js';
+        s.src = '//' + "andschar-github-io" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
@@ -544,7 +556,7 @@ R package, a project where I’m also involved.</p>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="/2020/08/11/standartox/">Standartox</a></li>
+			<li class="widget__item"><a class="widget__link" href="/2020/08/11/standartox/">Standartox - Standardizing Toxicity Data</a></li>
 		</ul>
 	</div>
 </div>
@@ -588,5 +600,7 @@ R package, a project where I’m also involved.</p>
 </footer>
 	</div>
 <script async defer src="/js/menu.js"></script>
+<script src="/js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async></script>
 </body>
 </html>
