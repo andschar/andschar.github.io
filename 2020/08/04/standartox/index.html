@@ -266,7 +266,7 @@ of chemicals provided).</p>
 ## duration: 24, 120
 ## endpoint: XX50
 ## habitat: freshwater</code></pre>
-<p><code>stx_query()</code> returns a list containing a <strong>filtered</strong>, a <strong>filtered_all</strong>
+<p><code>stx_query()</code> then returns a list containing a <strong>filtered</strong>, a <strong>filtered_all</strong>
 and the <strong>aggregated</strong> data set as well as a <strong>meta</strong> data set.
 These are all <code>data.table</code>s (and <code>data.frame</code>s) (Disclaimer: You might encounter
 other list entries, which are currently work in progress and shouldn’t bother
@@ -377,7 +377,7 @@ species, including Rainbow trout and Pacific salmons comprised in the genus.
 Here it would be better to choose a specific <a href="https://en.wikipedia.org/wiki/Oncorhynchus"><em>Oncorhynchus</em></a>
 species, related to the study area.</p>
 <p>This is just a quick example on how to use <strong>Standartox</strong>. You can further
-refine the query to your needs, by setting parameters, such as <code>chemical_clas</code>
+refine the query to your needs, by setting parameters, such as <code>chemical_class</code>
 <code>chemical_role</code>, <code>trophic_lvl</code>, <code>region</code> etc. Bear in mind though, this
 data might not (yet) be complete.</p>
 </div>
@@ -393,6 +393,16 @@ more detailed explanation of the R package at the <a href="https://andschar.gith
 <p>By the way, if you need additional data for your chemicals, you most certainly
 can retrieve them with the help of the <a href="https://github.com/ropensci/webchem">webchem</a>
 R package, a project I’m also involved in.</p>
+</div>
+<div id="citing-standartox" class="section level2">
+<h2>Citing Standartox</h2>
+<p>When using Standartox, please cite the following publication and R package:</p>
+<ul>
+<li><p>Scharmüller, A.; Schreiner, V.C.; Schäfer, R.B.
+Standartox: Standardizing Toxicity Data. Data 2020, 5, 46.</p></li>
+<li><p>Andreas Scharmüller (2020). standartox: Ecotoxicological information from the standartox database.
+R package version X.X.X.XXXX. <a href="https://github.com/andschar/standartox" class="uri">https://github.com/andschar/standartox</a>.</p></li>
+</ul>
 </div>
 <div id="tech-stack" class="section level2">
 <h2>Tech stack</h2>
